@@ -5,6 +5,7 @@ from helper import norm_pdf
 # around one of the landmarks and we do not know which.
 def initialize_priors(map_size, landmarks, stdev):
     # Set all probabilities to zero initially.
+    # 초기 모든 확률-> 0 %
     priors = [0.0] * map_size
     # Initialize prior distribution assuming the vehicle is at
     # landmark +/- 1.0 meters * stdev.
@@ -16,11 +17,14 @@ def initialize_priors(map_size, landmarks, stdev):
         c = 0
         while start + c <= p + stdev:
             # Gather positions to set initial probability.
+            # 초기 확률을 설정하기 위해 위치를 수집합니다.
             positions.append(start + c)
             c += 1
     # Calculate actual probability to be uniformly distributed.
+    # 균일하게 분포 될 실제 확률을 계산합니다.
     prob = 1.0 / len(positions)
     # Set the probability to each position.
+    # 각 위치에 확률을 설정합니다.
     for p in positions:
         priors[p] += prob
     return priors
@@ -42,6 +46,11 @@ def motion_model(position, mov, priors, map_size, stdev):
     # Initialize the position's probability to zero.
     position_prob = 0.0
 
+    for p in range(map_size) :
+        position_prob = position_prob + norm_pdf(position - p, mov, stdev) * priors[p]
+    # The prediction of motion model probability can be calculated by using the above code.
+    # The code is sum of multiplying prior position by normal distribution.
+
     # TODO: Loop over state space for all possible prior positions,
     # calculate the probability (using norm_pdf) of the vehicle
     # moving to the current position from that prior.
@@ -53,6 +62,15 @@ def motion_model(position, mov, priors, map_size, stdev):
 def observation_model(landmarks, observations, pseudo_ranges, stdev):
     # Initialize the measurement's probability to one.
     distance_prob = 1.0
+
+    if len(observations) == 0 or len(observations) > len(pseudo_ranges):
+        distance_prob = 0.0
+
+    else :
+        for i in range(len(observations)):
+            distance_prob = distance_prob * norm_pdf(observations[i], pseudo_ranges[i], stdev)
+
+    # The observation model probability can be calculated by using the above code.
 
     # TODO: Calculate the observation model probability as follows:
     # (1) If we have no observations, we do not have any probability.

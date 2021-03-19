@@ -10,22 +10,30 @@ from markov_localizer import normalize_distribution
 
 if __name__ == '__main__':
     # Initialize graph data to an empty list
+    # 그래프 초기화
     graph = []
     # Std dev for initial position
+    # 초기 위치에 대한 표준 편차 초기화
     position_stdev = 1.0
     # Std dev for control (movement)
+    # 초기 Control 표준 편차 초기화
     control_stdev = 1.0
     # Std dev for observation (measurement)
+    # 초기 관측, 측정 표준 편차 초기화
     observation_stdev = 1.0
     # Assumed constant velocity of vehicle
+    # 차량의 등속 셋팅 및 가정
     mov_per_timestep = 1.0
 
     # Size of the map
+    # 맵의 사이즈
     map_size = 25
     # Map (landmark positions)
+    # 랜드마크인 나무들의 위치
     landmark_positions = [3, 9, 14, 23]
 
     # Observation data
+    # 관측했던 데이터??
     observations = [
         [1, 7, 12, 21],
         [0, 6, 11, 20],
@@ -55,22 +63,26 @@ if __name__ == '__main__':
     ]
 
     # Initialize priors (initial belief)
+    # 초기화 priors
     priors = initialize_priors(
         map_size, landmark_positions, position_stdev
     )
+    # print(priors)
 
     # Cycle through timesteps
     for t in range(len(observations)):
-        '''
-        print("---------------TIME STEP---------------")
-        print("t = %d" % t)
-        print("-----Motion----------OBS----------------PRODUCT--")
-        '''
+
+        # print("---------------TIME STEP---------------")
+        # print("t = %d" % t)
+        # print(range(map_size))
+        # print("-----Motion----------OBS----------------PRODUCT--")
+
         posteriors = [0.0] * map_size
         # Step through each pseudo position p (to determine pdf)
         for pseudo_position in range(map_size):
             # Prediction:
             # Calculate probability of the vehicle being at position p
+            # 차량이 p 위치에있을 확률 계산
             motion_prob = motion_model(
                 pseudo_position, mov_per_timestep, priors,
                 map_size, control_stdev
@@ -79,25 +91,38 @@ if __name__ == '__main__':
             pseudo_ranges = estimate_pseudo_range(
                 landmark_positions, pseudo_position
             )
+            # print("pseudo_position = %d" % pseudo_position)
+            # print(range(map_size))
+            # print("pseudo_ranges =")
+            # print(pseudo_ranges)
+            # print("observations =")
+            # print(observations[t])
             # Measurement update:
             # Calculate observation probability
             observation_prob = observation_model(
                 landmark_positions, observations[t],
                 pseudo_ranges, observation_stdev
             )
+            # print(observation_prob)
             # Calculate posterior probability
             posteriors[pseudo_position] = motion_prob * observation_prob
 
-            '''
-            print("%f\t%f\t%f" % (motion_prob,
-                                  observation_prob,
-                                  posteriors[pseudo_position])
-            )
-            '''
+            # print("motion_prob =")
+            # print(motion_prob)
+            # print("observation_prob =")
+            # print(observation_prob)
+            # print("posteriors =")
+            # print(posteriors[pseudo_position])
+            # '''
+            # print("%f\t%f\t%f" % (motion_prob,
+            #                       observation_prob,
+            #                       posteriors[pseudo_position])
+            # )
+            # '''
 
         # Normalize the posterior probability distribution
         posteriors = normalize_distribution(posteriors)
-
+        # print(posteriors)
         # Update priors with posteriors
         priors = posteriors
 
@@ -113,4 +138,6 @@ if __name__ == '__main__':
         fig, graph_animator.animate, blit=True, interval=1000, repeat=False,
         frames=len(graph)
     )
+    ani.save('Markov_of_yunho.gif', writer='imagemagick', fps=1, dpi=100)
+
     plt.show()
