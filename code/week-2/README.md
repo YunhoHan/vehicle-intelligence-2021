@@ -32,6 +32,7 @@
 
 
     def observation_model(landmarks, observations, pseudo_ranges, stdev):
+        
         # Initialize the measurement's probability to one.
         distance_prob = 1.0
 
