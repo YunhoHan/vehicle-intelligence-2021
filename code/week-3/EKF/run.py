@@ -9,6 +9,7 @@ def testEKF(inputfilename):
         return
     lines = f.readlines()
     f.close()
+    # load data of Lidar and Radar
 
     # Instantiate an extended Kalman filter
     fusion_EKF = EKF()
