@@ -17,6 +17,7 @@ def read_map_from_file(filename):
     lines = f.readlines()
     f.close()
     landmarks = {}
+    # Landmarks recorded in a dictionary that contains dictionaries with keys 'x' & 'y'.
     for line in lines:
         tokens = line.split()
         landmarks[int(tokens[2])] = {
@@ -42,8 +43,8 @@ def read_measurements_from_file(filename):
             'gnss_theta': theta,
             'previous_velocity': velocity,
             'previous_yawrate': yawrate,
-            'measurement_x': measurement_x,
-            'measurement_y': measurement_y,
+            'measurement_x': measurement_x, # x of measured landmarks
+            'measurement_y': measurement_y, # y of measured landmarks
         }
         i += 3
         yield measurement

@@ -37,4 +37,6 @@ def plot_2D(graph):
         fig, graph_animator.animate, blit=True, interval=50, repeat=False,
         frames=len(graph)
     )
+    _ .save('Particle_filter_of_yunho.gif', writer='imagemagick', fps=30, dpi=100)
+
     plt.show()
