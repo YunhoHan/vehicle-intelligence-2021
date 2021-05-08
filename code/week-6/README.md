@@ -2,7 +2,7 @@
 
 ---
 [//]: # (Image References)
-[result1]: ./GNB_result.png
+[result1]: GNB_result.PNG
 # #5-1 Home Work - Gaussian Naive Bayes Report
 
 Gaussian Naive Bayes 과제는 수집된 데이터를 이용하여 각 주행(왼쪽차선 이동, 직진 이동, 오른쪽차선 이동)의 평균들과 표준편차들을 계산한다. 
@@ -95,7 +95,7 @@ Gaussian Naive Bayes 과제는 수집된 데이터를 이용하여 각 주행(�
 * 위의 그림은 경로를 예측하는데 있어서 계산된 정확도를 나타낸다. 최종 정확도는 84.40 %의 결과를 나타내었다.
 
 ---
-[result2]: ./BP_result.png
+[result2]: BP_result.PNG
 # #5-2 Home Work - Behaviour Planning Report
 
 cost(각 차선에서의 속도, goal lane과의 거리)를 고려하여 현재 자동차에 대한 Trajectory을 구하는 Behaviour Planning을 수행하였다.

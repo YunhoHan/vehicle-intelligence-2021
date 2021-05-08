@@ -2,8 +2,8 @@
 
 ---
 [//]: # (Image References)
-[result1]: ./cost_2_1_20.png
-[result2]: ./cost_2_1_2.png
+[result1]: cost_2_1_2.PNG
+[result2]: cost_2_1_20.PNG
 
 # #4 Home Work - Dynamic Programming Approach Report
 

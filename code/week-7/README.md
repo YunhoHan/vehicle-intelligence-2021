@@ -2,12 +2,12 @@
 
 ---
 [//]: # (Image References)
-[result1]: ./speed_0.5_NUM_THETA_CELLS_90.png
-[result2]: ./speed_1.0_NUM_THETA_CELLS_90.png
-[result3]: ./speed_0.5_NUM_THETA_CELLS_180.png
-[result4]: ./speed_1.0_NUM_THETA_CELLS_180.png
-[result5]: ./speed_0.5_NUM_THETA_CELLS_360.png
-[result6]: ./speed_1.0_NUM_THETA_CELLS_360.png
+[result1]: speed_0.5_NUM_THETA_CELLS_90.PNG
+[result2]: speed_1.0_NUM_THETA_CELLS_90.PNG
+[result3]: speed_0.5_NUM_THETA_CELLS_180.PNG
+[result4]: speed_1.0_NUM_THETA_CELLS_180.PNG
+[result5]: speed_0.5_NUM_THETA_CELLS_360.PNG
+[result6]: speed_1.0_NUM_THETA_CELLS_360.PNG
 # #6 Home Work - Hybrid A* Algorithm Report
 
 Hybrid A* Algorithm는 기존 A* Algorithm과 다르게 complete와 optimal하지 않은 알고리즘이다.
