@@ -1,6 +1,7 @@
 # Week 7 - Hybrid A* Algorithm & Trajectory Generation
 
 ---
+[//]: # (Image References)
 [result1]: ./speed_0.5_NUM_THETA_CELLS_90.png
 [result2]: ./speed_1.0_NUM_THETA_CELLS_90.png
 [result3]: ./speed_0.5_NUM_THETA_CELLS_180.png

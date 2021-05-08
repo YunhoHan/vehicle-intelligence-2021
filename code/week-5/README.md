@@ -1,8 +1,9 @@
 # Week 5 - Path Planning & the A* Algorithm
 
 ---
-[result1]: ./cost(2,1,20).png
-[result2]: ./cost(2,1,2).png
+[//]: # (Image References)
+[result1]: ./cost_2_1_20.png
+[result2]: ./cost_2_1_2.png
 
 # #4 Home Work - Dynamic Programming Approach Report
 
@@ -114,11 +115,11 @@ Dynamic Programming Approach 방법을 이용하여 경로 생성 알고리즘�
 * 이후, 이동하려는 cell에 장애물이 여부와 주어진 grid(맵)로부터 벗어났는지 체크하고, action에 따라 다른 cost 값을 부여하여 계산한다. 만일 계산한 cost 값이 이전에 저장된 값보다 작다면 action과 cost를 업데이트한다.
 * 방향 문자열이 표시된 Map인 policy2D에서 초기 start지점에 action_name을 갱신한다. policy(dir, y, x)에 저장된 action 정보에 따라 policy2D에서 해당 action name을 저장한다. 이 작업은 Goal 지점을 찾을 때까지 반복하여 수행한다.
 
-![cost(2,1,20)][result1]
+![cost1][result1]
 
 * 위의 그림은 act (right, straight, left)의 cost가 (2,1,20)일 때, Dynamic Programming Approach 결과이다.
 
-![cost(2,1,2)][result2]
+![cost2][result2]
 
 * 위의 그림은 act (right, straight, left)의 cost가 (2,1,2)일 때, Dynamic Programming Approach 결과이다.
 

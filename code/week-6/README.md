@@ -1,6 +1,7 @@
 # Week 6 - Prediction & Behaviour Planning
 
 ---
+[//]: # (Image References)
 [result1]: ./GNB_result.png
 # #5-1 Home Work - Gaussian Naive Bayes Report
 
